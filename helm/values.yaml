@@ -1,0 +1,15 @@
+global:
+  env: dev
+  appVersion: "1.0"
+
+postgres:
+  name: postgres
+  namespace: default
+  replicas: 3
+  db_size: 200Mi
+
+secrets:
+  name: secrets-dev
+  namespace: default
+  superUserPassword: admin123
+  replicationUserPassword: admin123

@@ -1,26 +1,26 @@
 apiVersion: kubegres.reactive-tech.io/v1
 kind: Kubegres
 metadata:
-  name: kgres-test
+  name: {{ .Values.postgres.name }}
   namespace: default
 
 spec:
 
-   replicas: 3
+   replicas: {{ .Values.postgres.replicas }}
    image: postgres:13
 
    database:
-      size: 200Mi
+      size: {{ .Values.postgres.db_size }}
 
    env:
       - name: POSTGRES_PASSWORD
         valueFrom:
            secretKeyRef:
-              name: kgres-test-secret
+              name: {{ .Values.secrets.name }}
               key: superUserPassword
 
       - name: POSTGRES_REPLICATION_PASSWORD
         valueFrom:
            secretKeyRef:
-              name: kgres-test-secret
+              name: {{ .Values.secrets.name }}
               key: replicationUserPassword
