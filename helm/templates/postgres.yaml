@@ -1,7 +1,7 @@
 apiVersion: kubegres.reactive-tech.io/v1
 kind: Kubegres
 metadata:
-  name: {{ .Values.postgres.name }}
+  name: "{{ $.Values.postgres.name }}-{{ .Values.global.env }}"
   namespace: default
 
 spec:
